@@ -1,4 +1,4 @@
-package com.example.bulbapp.bulbapplib.services;
+package com.example.bulbapp.bulbapplib.services.infrastructure;
 
 import android.content.Context;
 import android.util.Log;
@@ -17,10 +17,10 @@ import java.io.UnsupportedEncodingException;
 import java.util.Map;
 
 
-public class HttpRequestService {
+public class HttpRequestInfrastructureServiceImpl implements HttpRequestInfrastructureService {
     private RequestQueue requestQueue;
 
-    public HttpRequestService(RequestQueue requestQueue){
+    public HttpRequestInfrastructureServiceImpl(RequestQueue requestQueue){
         this.requestQueue = requestQueue;
     }
 
