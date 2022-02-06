@@ -2,6 +2,9 @@ package com.example.bulbapp;
 
 import android.os.Bundle;
 
+import com.android.volley.toolbox.Volley;
+import com.example.bulbapp.bulbapplib.ServiceManager;
+import com.example.bulbapp.bulbapplib.models.Light;
 import com.google.android.material.snackbar.Snackbar;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,6 +20,8 @@ import com.example.bulbapp.databinding.ActivityMainBinding;
 
 import android.view.Menu;
 import android.view.MenuItem;
+
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -43,6 +48,8 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        ServiceManager.Initialize(Volley.newRequestQueue(this));
     }
 
     @Override
@@ -54,6 +61,11 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
+        List<Light> lights = ServiceManager.getLightApplicationService().getLights();
+        Light light = lights.get(0);
+        light.setRGB(0, 255, 0);
+        ServiceManager.getLightApplicationService().updateLight(light);
+
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
         // as you specify a parent activity in AndroidManifest.xml.

@@ -5,11 +5,11 @@ public class Variables {
     private String typename;
     private String macAddress;
     private String provider;
-    private byte r = 0;
-    private byte g = 0;
-    private byte b = 0;
-    private byte c = 0;
-    private byte w = 0;
+    private int r = 0;
+    private int g = 0;
+    private int b = 0;
+    private int c = 0;
+    private int w = 0;
 
     public Variables(String lightId, String typename, String macAddress, String provider) {
         this.lightId = lightId;
@@ -18,43 +18,43 @@ public class Variables {
         this.provider = provider;
     }
 
-    public byte getR() {
+    public int getR() {
         return r;
     }
 
-    public void setR(byte r) {
+    public void setR(int r) {
         this.r = r;
     }
 
-    public byte getG() {
+    public int getG() {
         return g;
     }
 
-    public void setG(byte g) {
+    public void setG(int g) {
         this.g = g;
     }
 
-    public byte getB() {
+    public int getB() {
         return b;
     }
 
-    public void setB(byte b) {
+    public void setB(int b) {
         this.b = b;
     }
 
-    public byte getC() {
+    public int getC() {
         return c;
     }
 
-    public void setC(byte c) {
+    public void setC(int c) {
         this.c = c;
     }
 
-    public byte getW() {
+    public int getW() {
         return w;
     }
 
-    public void setW(byte w) {
+    public void setW(int w) {
         this.w = w;
     }
 
@@ -73,4 +73,5 @@ public class Variables {
     public String getProvider() {
         return provider;
     }
+
 }
