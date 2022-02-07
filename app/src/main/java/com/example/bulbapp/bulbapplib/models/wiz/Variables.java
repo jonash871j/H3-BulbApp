@@ -3,6 +3,7 @@ package com.example.bulbapp.bulbapplib.models.wiz;
 import com.google.gson.annotations.SerializedName;
 
 public class Variables {
+
     private String lightId;
     @SerializedName(value = "__typename")
     private String typename;

@@ -30,7 +30,7 @@ public class WizLightServiceImpl implements LightService {
         Gson gson = new Gson();
         WizLight wizLight = ((WizLightAdapter)light).getWizLight();
         HttpContent httpContent = new HttpContent();
-        httpContent.addHeader("Cookie", "connect.sid=s%3AdudvL4MCgi1YxvK2aBNHyKJnmbFe8Y-M.vUzIeTEsZ%2F2MWyeUw0rtLaeUCuDD0qbkwhrjc8FcF0I");
+        httpContent.addHeader("Cookie", "connect.sid=s%3A8l7--o3F8YFKVJNj-tZhGVPz_PkO-iCN.YeuWbaiNaOTMohWDuyf94khGBCwekYS6cq%2Fi%2FtUVeh0");
         httpContent.setBody(gson.toJson(wizLight));
         httpRequestService.makeRequest(Request.Method.POST, "https://api.pro.wizconnected.com/graphql", httpContent);
     }
@@ -45,7 +45,7 @@ public class WizLightServiceImpl implements LightService {
 
     @Override
     public List<Light> getLights() {
-        Variables variables = new Variables("14201789", "LightModeColor", "d8a011906b11", "WiZ");
+        Variables variables = new Variables("14256970", "LightModeColor", "d8a011906b11", "WiZ");
         return new ArrayList<Light>(){{
             add(new WizLightAdapter(new WizLight(variables, WizLight.getLightOnQuery())));
         }};

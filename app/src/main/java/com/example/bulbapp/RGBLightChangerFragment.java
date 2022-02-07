@@ -4,8 +4,13 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.SeekBar;
 
 import androidx.fragment.app.Fragment;
+
+import com.example.bulbapp.bulbapplib.ServiceManager;
+import com.example.bulbapp.bulbapplib.models.BasicLight;
+import com.example.bulbapp.bulbapplib.services.library.GenericLightService;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -22,6 +27,7 @@ public class RGBLightChangerFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
+    private GenericLightService genericLightService;
 
     public RGBLightChangerFragment() {
         // Required empty public constructor
@@ -59,5 +65,34 @@ public class RGBLightChangerFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_r_g_b_light_changer, container, false);
+    }
+
+    @Override
+    public void onViewCreated(View view, Bundle savedInstanceState) {
+        genericLightService = ServiceManager.get().getGenericLightService();
+
+        SeekBar sbRed = getView().findViewById(R.id.sbRed);
+        SeekBar sbGreen = getView().findViewById(R.id.sbGreen);
+        SeekBar sbBlue = getView().findViewById(R.id.sbBlue);
+
+        SeekBar.OnSeekBarChangeListener seekBarChangeListener = new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
+
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                genericLightService.updateAllLightsToNewLight(new BasicLight(0, sbRed.getProgress(), sbGreen.getProgress(), sbBlue.getProgress()));
+            }
+        };
+        sbRed.setOnSeekBarChangeListener(seekBarChangeListener);
+        sbGreen.setOnSeekBarChangeListener(seekBarChangeListener);
+        sbBlue.setOnSeekBarChangeListener(seekBarChangeListener);
     }
 }
