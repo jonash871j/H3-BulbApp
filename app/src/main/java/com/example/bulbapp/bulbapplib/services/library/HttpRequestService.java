@@ -1,7 +1,7 @@
-package com.example.bulbapp.bulbapplib.services.infrastructure;
+package com.example.bulbapp.bulbapplib.services.library;
 
 import com.example.bulbapp.bulbapplib.models.HttpContent;
 
-public interface HttpRequestInfrastructureService {
+public interface HttpRequestService {
     void makeRequest(int method, String url, HttpContent httpContent);
 }

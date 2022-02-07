@@ -1,7 +1,10 @@
 package com.example.bulbapp.bulbapplib.models.wiz;
 
+import com.google.gson.annotations.SerializedName;
+
 public class Variables {
     private String lightId;
+    @SerializedName(value = "__typename")
     private String typename;
     private String macAddress;
     private String provider;
@@ -10,6 +13,7 @@ public class Variables {
     private int b = 0;
     private int c = 0;
     private int w = 0;
+    private boolean status = true;
 
     public Variables(String lightId, String typename, String macAddress, String provider) {
         this.lightId = lightId;
@@ -74,4 +78,11 @@ public class Variables {
         return provider;
     }
 
+    public boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
+    }
 }

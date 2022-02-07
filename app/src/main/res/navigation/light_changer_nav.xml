@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/light_changer_nav"
+    app:startDestination="@id/basicLightChangerFragment">
+    <fragment
+        android:id="@+id/basicLightChangerFragment"
+        android:name="com.example.bulbapp.BasicLightChangerFragment"
+        android:label="fragment_basic_light_changer"
+        tools:layout="@layout/fragment_basic_light_changer" />
+    <fragment
+        android:id="@+id/temperatureLightChangerFragment"
+        android:name="com.example.bulbapp.TemperatureLightChangerFragment"
+        android:label="fragment_temperature_light_changer"
+        tools:layout="@layout/fragment_temperature_light_changer" />
+    <fragment
+        android:id="@+id/RGBLightChangerFragment"
+        android:name="com.example.bulbapp.RGBLightChangerFragment"
+        android:label="fragment_r_g_b_light_changer"
+        tools:layout="@layout/fragment_r_g_b_light_changer" />
+</navigation>

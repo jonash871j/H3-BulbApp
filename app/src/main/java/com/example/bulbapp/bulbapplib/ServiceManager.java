@@ -1,35 +1,42 @@
 package com.example.bulbapp.bulbapplib;
 
 import com.android.volley.RequestQueue;
-import com.example.bulbapp.bulbapplib.services.application.LightApplicationService;
-import com.example.bulbapp.bulbapplib.services.application.LightApplicationServiceImpl;
-import com.example.bulbapp.bulbapplib.services.domain.LightDomainService;
-import com.example.bulbapp.bulbapplib.services.domain.WizLightDomainServiceImpl;
-import com.example.bulbapp.bulbapplib.services.infrastructure.HttpRequestInfrastructureService;
-import com.example.bulbapp.bulbapplib.services.infrastructure.HttpRequestInfrastructureServiceImpl;
-import com.example.bulbapp.bulbapplib.services.infrastructure.SqlLiteInfrastructureService;
+import com.example.bulbapp.bulbapplib.services.library.GenericLightService;
+import com.example.bulbapp.bulbapplib.services.library.GenericLightServiceImpl;
+import com.example.bulbapp.bulbapplib.services.library.HttpRequestService;
+import com.example.bulbapp.bulbapplib.services.library.HttpRequestServiceImpl;
+import com.example.bulbapp.bulbapplib.services.library.LightService;
+import com.example.bulbapp.bulbapplib.services.library.SqlLiteService;
+import com.example.bulbapp.bulbapplib.services.library.WizLightServiceImpl;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ServiceManager {
 
-    private static LightApplicationService lightApplicationService = null;
-    private static List<LightDomainService> lightDomainServices = null;
-    private static HttpRequestInfrastructureService httpRequestInfrastructureService = null;
-    private static SqlLiteInfrastructureService sqlLiteInfrastructureService = null;
+    private static ServiceManager instance = null;
+    private GenericLightService genericLightService = null;
+    private List<LightService> lightServices = null;
+    private HttpRequestService httpRequestService = null;
+    private SqlLiteService sqlLiteService = null;
 
-    public static void Initialize(RequestQueue requestQueue){
-        httpRequestInfrastructureService = new HttpRequestInfrastructureServiceImpl(requestQueue);
+    private ServiceManager(RequestQueue requestQueue){
+        httpRequestService = new HttpRequestServiceImpl(requestQueue);
 
-        lightDomainServices = new ArrayList<LightDomainService>() {{
-            add(new WizLightDomainServiceImpl(httpRequestInfrastructureService, null));
+        lightServices = new ArrayList<LightService>() {{
+            add(new WizLightServiceImpl(httpRequestService, null));
         }};
 
-        lightApplicationService = new LightApplicationServiceImpl(lightDomainServices);
+        genericLightService = new GenericLightServiceImpl(lightServices);
     }
 
-    public static LightApplicationService getLightApplicationService() {
-        return lightApplicationService;
+    public static void Initialize(RequestQueue requestQueue){
+        instance = new ServiceManager(requestQueue);
+    }
+    public static ServiceManager get(){
+        return instance;
+    }
+    public GenericLightService getGenericLightService() {
+        return genericLightService;
     }
 }
