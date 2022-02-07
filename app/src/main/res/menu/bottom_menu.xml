@@ -3,7 +3,7 @@
 
     <item
         android:title="Basic"
-        android:icon="@drawable/ic_launcher_background"
+        android:icon="@mipmap/ic_basic_light_foreground"
         android:id="@+id/basicLightChangerFragment"/>
     <item
         android:title="Temperature"
@@ -11,6 +11,6 @@
         android:id="@+id/temperatureLightChangerFragment"/>
     <item
         android:title="RGB"
-        android:icon="@drawable/ic_launcher_background"
+        android:icon="@mipmap/ic_rgb_light_foreground"
         android:id="@+id/RGBLightChangerFragment"/>
 </menu>

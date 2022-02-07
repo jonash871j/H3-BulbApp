@@ -22,11 +22,9 @@ public class ServiceManager {
 
     private ServiceManager(RequestQueue requestQueue){
         httpRequestService = new HttpRequestServiceImpl(requestQueue);
-
         lightServices = new ArrayList<LightService>() {{
             add(new WizLightServiceImpl(httpRequestService, null));
         }};
-
         genericLightService = new GenericLightServiceImpl(lightServices);
     }
 
@@ -36,6 +34,7 @@ public class ServiceManager {
     public static ServiceManager get(){
         return instance;
     }
+
     public GenericLightService getGenericLightService() {
         return genericLightService;
     }
