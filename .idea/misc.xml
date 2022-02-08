@@ -3,11 +3,15 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/jonas.hansen/AndroidStudioProjects/BulbApp/app/src/main/res/drawable/bulb_icon.xml" value="0.1955" />
         <entry key="..\:/Users/jonas.hansen/AndroidStudioProjects/BulbApp/app/src/main/res/layout/activity_main.xml" value="0.14817629179331307" />
         <entry key="..\:/Users/jonas.hansen/AndroidStudioProjects/BulbApp/app/src/main/res/layout/content_main.xml" value="0.14817629179331307" />
         <entry key="..\:/Users/jonas.hansen/AndroidStudioProjects/BulbApp/app/src/main/res/layout/fragment_basic_light_changer.xml" value="0.128125" />
         <entry key="..\:/Users/jonas.hansen/AndroidStudioProjects/BulbApp/app/src/main/res/layout/fragment_first.xml" value="0.31476449275362317" />
         <entry key="..\:/Users/jonas.hansen/AndroidStudioProjects/BulbApp/app/src/main/res/layout/fragment_r_g_b_light_changer.xml" value="0.128125" />
+        <entry key="..\:/Users/jonas.hansen/AndroidStudioProjects/BulbApp/app/src/main/res/layout/fragment_temperature_light_changer.xml" value="0.2033514492753623" />
+        <entry key="..\:/Users/jonas.hansen/AndroidStudioProjects/BulbApp/app/src/main/res/menu/bottom_menu.xml" value="0.36" />
+        <entry key="..\:/Users/jonas.hansen/AndroidStudioProjects/BulbApp/app/src/main/res/mipmap-anydpi-v26/ic_temperature_bulb.xml" value="0.1015" />
       </map>
     </option>
   </component>

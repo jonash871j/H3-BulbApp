@@ -11,9 +11,9 @@
         tools:layout="@layout/fragment_basic_light_changer" />
     <fragment
         android:id="@+id/temperatureLightChangerFragment"
-        android:name="com.example.bulbapp.TemperatureLightChangerFragment"
+        android:name="com.example.bulbapp.SensorLightChangerFragment"
         android:label="fragment_temperature_light_changer"
-        tools:layout="@layout/fragment_temperature_light_changer" />
+        tools:layout="@layout/fragment_sensor_light_changer" />
     <fragment
         android:id="@+id/RGBLightChangerFragment"
         android:name="com.example.bulbapp.RGBLightChangerFragment"

@@ -8,16 +8,6 @@
 
     <!-- TODO: Update blank fragment layout -->
 
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="249dp"
-        android:layout_height="263dp"
-        android:layout_marginTop="4dp"
-        android:src="@drawable/bulb_icon"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <SeekBar
         android:id="@+id/sbBrightness"
         android:layout_width="313dp"
@@ -33,12 +23,24 @@
         android:id="@+id/textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="16dp"
         android:text="Brightness"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView" />
+        app:layout_constraintTop_toBottomOf="@+id/ivBasicBulb" />
+
+    <ImageView
+        android:id="@+id/ivBasicBulb"
+        android:layout_width="268dp"
+        android:layout_height="259dp"
+        android:foreground="@mipmap/ic_lightbulb_foreground"
+        android:foregroundTint="#000000"
+        android:src="@mipmap/ic_lightbulb_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/ic_lightbulb_background" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,9 +1,11 @@
 package com.example.bulbapp;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.SeekBar;
 
 import androidx.fragment.app.Fragment;
@@ -27,7 +29,6 @@ public class BasicLightChangerFragment extends Fragment {
     // TODO: Rename and change types of parameters
     private String mParam1;
     private String mParam2;
-    private SeekBar seekBar;
     private GenericLightService genericLightService;
 
     public BasicLightChangerFragment() {
@@ -73,11 +74,12 @@ public class BasicLightChangerFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         genericLightService = ServiceManager.get().getGenericLightService();
 
-        seekBar = getView().findViewById(R.id.sbBrightness);
-        seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+        ImageView ivBasicBulb = getView().findViewById(R.id.ivBasicBulb);
+        SeekBar sbBrightness = getView().findViewById(R.id.sbBrightness);
+        sbBrightness.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-
+                ivBasicBulb.setColorFilter(Color.rgb(sbBrightness.getProgress(), sbBrightness.getProgress(), sbBrightness.getProgress()));
             }
 
             @Override

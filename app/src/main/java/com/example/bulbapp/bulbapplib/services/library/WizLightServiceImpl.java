@@ -45,9 +45,9 @@ public class WizLightServiceImpl implements LightService {
 
     @Override
     public List<Light> getLights() {
-        Variables variables = new Variables("14256970", "LightModeColor", "d8a011906b11", "WiZ");
         return new ArrayList<Light>(){{
-            add(new WizLightAdapter(new WizLight(variables, WizLight.getLightOnQuery())));
+            add(new WizLightAdapter(new WizLight(new Variables("14274692", "LightModeColor", "d8a011906b11", "WiZ"), WizLight.getLightOnQuery())));
+            add(new WizLightAdapter(new WizLight(new Variables("14124331", "LightModeColor", "d8a011906b11", "WiZ"), WizLight.getLightOnQuery())));
         }};
     }
 

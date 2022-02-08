@@ -6,6 +6,18 @@
     android:layout_height="match_parent"
     tools:context=".RGBLightChangerFragment">
 
+    <ImageView
+        android:id="@+id/ivRgbBulb"
+        android:layout_width="268dp"
+        android:layout_height="259dp"
+        android:foreground="@mipmap/ic_lightbulb_foreground"
+        android:foregroundTint="#000000"
+        android:src="@mipmap/ic_lightbulb_background"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/ic_lightbulb_background" />
+
     <SeekBar
         android:id="@+id/sbBlue"
         android:layout_width="313dp"
@@ -75,17 +87,8 @@
         android:text="Red"
         android:textSize="24sp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.491"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
-
-    <ImageView
-        android:id="@+id/imageView2"
-        android:layout_width="249dp"
-        android:layout_height="263dp"
-        android:layout_marginTop="4dp"
-        android:src="@drawable/bulb_icon"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/ivRgbBulb" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
