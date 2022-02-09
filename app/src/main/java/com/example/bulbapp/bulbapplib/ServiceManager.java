@@ -1,6 +1,7 @@
 package com.example.bulbapp.bulbapplib;
 
 import com.android.volley.RequestQueue;
+import com.example.bulbapp.bulbapplib.services.library.ArduionoLightServiceImpl;
 import com.example.bulbapp.bulbapplib.services.library.GenericLightService;
 import com.example.bulbapp.bulbapplib.services.library.GenericLightServiceImpl;
 import com.example.bulbapp.bulbapplib.services.library.HttpRequestService;
@@ -24,6 +25,7 @@ public class ServiceManager {
         httpRequestService = new HttpRequestServiceImpl(requestQueue);
         lightServices = new ArrayList<LightService>() {{
             add(new WizLightServiceImpl(httpRequestService, null));
+            add(new ArduionoLightServiceImpl(httpRequestService, null));
         }};
         genericLightService = new GenericLightServiceImpl(lightServices);
     }

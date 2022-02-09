@@ -37,18 +37,12 @@ public class HttpRequestServiceImpl implements HttpRequestService {
         {
             @Override
             public String getBodyContentType() {
-                return "application/json; charset=utf-8";
+                return "application/json; charset=ascii";
             }
 
             @Override
             public byte[] getBody() {
-                String body = httpContent.getBody();
-                try {
-                    return body == null ? null : body.getBytes("utf-8");
-                } catch (UnsupportedEncodingException uee) {
-                    VolleyLog.wtf("Unsupported Encoding while trying to get the bytes of %s using %s", body, "utf-8");
-                    return null;
-                }
+                return httpContent.getBody();
             }
 
             @Override
