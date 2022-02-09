@@ -1,18 +1,12 @@
 package com.example.bulbapp.bulbapplib.services.library;
 
-import android.util.Log;
-
 import com.android.volley.Request;
 import com.example.bulbapp.bulbapplib.adapters.ArduionoLightAdapter;
-import com.example.bulbapp.bulbapplib.adapters.WizLightAdapter;
 import com.example.bulbapp.bulbapplib.models.ArduionoLight;
 import com.example.bulbapp.bulbapplib.models.HttpContent;
 import com.example.bulbapp.bulbapplib.models.Light;
-import com.example.bulbapp.bulbapplib.models.wiz.Variables;
-import com.example.bulbapp.bulbapplib.models.wiz.WizLight;
 import com.google.gson.Gson;
 
-import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,10 +26,13 @@ public class ArduionoLightServiceImpl implements LightService {
         if (!isLightSupported(light)){
             return;
         }
+
+        Gson gson = new Gson();
         ArduionoLight arduionoLight = ((ArduionoLightAdapter)light).getArduionoLight();
         HttpContent httpContent = new HttpContent();
-        httpContent.setBody(arduionoLight.toBinary());
-        httpRequestService.makeRequest(Request.Method.POST, "http://93.176.82.49/", httpContent);
+        httpContent.setBody(gson.toJson(arduionoLight));
+        //httpRequestService.makeRequest(Request.Method.POST, "http://93.176.82.49/", httpContent);
+        httpRequestService.makeRequest(Request.Method.POST, "http://192.168.1.4/", httpContent);
     }
 
     @Override

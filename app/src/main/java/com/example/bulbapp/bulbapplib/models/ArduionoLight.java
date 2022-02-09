@@ -5,16 +5,6 @@ public class ArduionoLight {
     private int g = 0;
     private int b = 0;
 
-    public byte[] toBinary()
-    {
-        return new byte[]
-        {
-                (byte)r,
-                (byte)g,
-                (byte)b
-        };
-    }
-
     public int getR() {
         return r;
     }

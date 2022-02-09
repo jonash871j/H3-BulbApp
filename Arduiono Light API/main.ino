@@ -1,41 +1,31 @@
 #include "http_server.hpp"
+#define RED_PIN 5
+#define GREEN_PIN 6
+#define BLUE_PIN 7
 
 void OnServerInfo(String msg);
 void OnRequest(HttpContent& httpContent, HttpResponder& responder);
 
-struct RGB
-{
-    byte r = 0;
-    byte g = 0;
-    byte b = 0;
-};
-
-byte macAddress[] = {
-  0x90, 0xA2, 0xDA, 0x10, 0x5F, 0x80
-};
-IPAddress ip(192, 168, 1, 3);
-HttpServer httpServer(macAddress, ip, 80);
+HttpServer* httpServer;
 
 void setup() 
 {
     Serial.begin(9600);
-    while (!Serial) 
-    {
-        ; // wait for serial port to connect. Needed for native USB port only
-    }
-    httpServer.ServerInfoEvent = &OnServerInfo;
-    httpServer.RequestEvent = &OnRequest;
-    httpServer.Start();
-
-    pinMode(5, OUTPUT);
-    pinMode(6, OUTPUT);
-    pinMode(7, OUTPUT);
+    pinMode(RED_PIN, OUTPUT);
+    pinMode(GREEN_PIN, OUTPUT);
+    pinMode(BLUE_PIN, OUTPUT);
+    
+    byte macAddress[] = { 0x90, 0xA2, 0xDA, 0x10, 0x5F, 0x80 };
+    IPAddress ip(192, 168, 1, 4);
+    httpServer = new HttpServer(macAddress, ip, 80);
+    httpServer->ServerInfoEvent = &OnServerInfo;
+    httpServer->RequestEvent = &OnRequest;
+    httpServer->Start();
 }
-
 
 void loop() 
 {
-    httpServer.Listen();
+    httpServer->Listen();
 }
 
 void OnServerInfo(String msg)
@@ -47,11 +37,11 @@ void OnRequest(HttpContent& httpContent, HttpResponder& responder)
 {
     if (httpContent.method == "POST")
     {
-        char* bytes = (char*)httpContent.body.c_str();
-        RGB* rgb = reinterpret_cast<RGB*>(bytes);
-        RGBColor(rgb->r, rgb->g, rgb->b);
-
-        responder.AddLine("r = " + String(rgb->r) + " g = " + String(rgb->g) + " b = " + String(rgb->b));
+        DynamicJsonDocument doc(1024);
+        deserializeJson(doc, httpContent.body);
+        analogWrite(RED_PIN, doc["r"]);
+        analogWrite(GREEN_PIN, doc["g"]);
+        analogWrite(BLUE_PIN, doc["b"]);
         responder.Send();
     }
     else
@@ -59,11 +49,4 @@ void OnRequest(HttpContent& httpContent, HttpResponder& responder)
         responder.SetStausCode(400);
         responder.Send();
     }
-}
-
-void RGBColor(int red, int green, int blue)
-{
-    analogWrite(5, red);
-    analogWrite(6, green);
-    analogWrite(7, blue);
 }
