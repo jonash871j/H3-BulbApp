@@ -31,8 +31,7 @@ public class ArduionoLightServiceImpl implements LightService {
         ArduionoLight arduionoLight = ((ArduionoLightAdapter)light).getArduionoLight();
         HttpContent httpContent = new HttpContent();
         httpContent.setBody(gson.toJson(arduionoLight));
-        //httpRequestService.makeRequest(Request.Method.POST, "http://93.176.82.49/", httpContent);
-        httpRequestService.makeRequest(Request.Method.POST, "http://192.168.1.4/", httpContent);
+        httpRequestService.makeRequest(Request.Method.POST, "http://93.176.82.49/", httpContent);
     }
 
     @Override

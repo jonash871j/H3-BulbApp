@@ -1,5 +1,5 @@
 #include "http_server.hpp"
-
+#define BUFFER_SIZE 512
 
 HttpServer::HttpServer(byte* macAddress, IPAddress& ipAddress, byte port)
     : macAddress(macAddress), ipAddress(ipAddress), port(port)
@@ -29,10 +29,10 @@ void HttpServer::Listen()
     {
         ServerInfoEvent("Client requested");
 
-        char buffer[1024];
-        client.readBytesUntil('\0', buffer, 1024);
+        char buffer[BUFFER_SIZE];
+        client.readBytesUntil('\0', buffer, BUFFER_SIZE);
         HttpContent httpContent;
-        HttpContentConverter::ConvertFromBuffer(httpContent, buffer, 1024);
+        HttpContentConverter::ConvertFromBuffer(httpContent, buffer, BUFFER_SIZE);
 
         HttpResponder responder(client);
         RequestEvent(httpContent, responder);

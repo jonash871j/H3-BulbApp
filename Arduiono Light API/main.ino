@@ -16,7 +16,7 @@ void setup()
     pinMode(BLUE_PIN, OUTPUT);
     
     byte macAddress[] = { 0x90, 0xA2, 0xDA, 0x10, 0x5F, 0x80 };
-    IPAddress ip(192, 168, 1, 4);
+    IPAddress ip(192, 168, 1, 3);
     httpServer = new HttpServer(macAddress, ip, 80);
     httpServer->ServerInfoEvent = &OnServerInfo;
     httpServer->RequestEvent = &OnRequest;
@@ -37,7 +37,7 @@ void OnRequest(HttpContent& httpContent, HttpResponder& responder)
 {
     if (httpContent.method == "POST")
     {
-        DynamicJsonDocument doc(1024);
+        DynamicJsonDocument doc(128);
         deserializeJson(doc, httpContent.body);
         analogWrite(RED_PIN, doc["r"]);
         analogWrite(GREEN_PIN, doc["g"]);

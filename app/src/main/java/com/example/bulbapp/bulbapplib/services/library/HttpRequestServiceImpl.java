@@ -37,7 +37,7 @@ public class HttpRequestServiceImpl implements HttpRequestService {
         {
             @Override
             public String getBodyContentType() {
-                return "application/json; charset=ascii";
+                return "application/json; charset=utf-8";
             }
 
             @Override

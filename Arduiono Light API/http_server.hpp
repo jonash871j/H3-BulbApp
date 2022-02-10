@@ -25,5 +25,4 @@ public:
 
 private:
     String IpAddressToString(IPAddress ipAddress);
-    void SendResponse(EthernetClient client);
 };
